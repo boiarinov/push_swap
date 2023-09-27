@@ -6,14 +6,13 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 21:50:42 by boiarinov         #+#    #+#             */
-/*   Updated: 2023/09/27 22:06:46 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/09/27 22:40:38 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-
-#define MAX_STACK_SIZE 100
+#include <stdio.h>
+#include "libft.h"
 
 // Define the stacks and their top indices
 int stack_a[MAX_STACK_SIZE];
@@ -155,19 +154,27 @@ void print_stack_b() {
     printf("\n");
 }
 
-int main() {
-    // Initialize stack a with random elements (for demonstration purposes)
-    push_a(3);
-    push_a(1);
-    push_a(5);
-    push_a(2);
-
-    // Sort stack a in ascending order
-    // You can use the provided operations here
-    // For example, to swap the top two elements of stack a, you can call sa().
-
-    // Print the sorted stack a
-    print_stack_a();
-
-    return 0;
+int	main (int argc, char **argv)
+{
+	int	*a;
+	int	*b;
+	int	i;
+	
+	if (argc > 1)
+	{
+		a = (int *)malloc(sizeof(int) * argc);
+		b = (int *)malloc(sizeof(int) * argc);
+		if (a == 0 || b == 0)
+		{
+			printf("Malloc error\n");
+			return (0);
+		}
+		if (ft_atoi(argv[i]) != 0)
+		{
+			a[i] = ft_atoi(argv[i]);
+			i++;
+		}
+		push_swap(a, b);
+	}
+	return (0);
 }
