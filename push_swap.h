@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 22:37:07 by boiarinov         #+#    #+#             */
-/*   Updated: 2023/09/27 22:40:45 by boiarinov        ###   ########.fr       */
+/*   Created: 2023/09/28 16:53:48 by aboiarin          #+#    #+#             */
+/*   Updated: 2023/09/28 16:54:04 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../libft/libft.h"

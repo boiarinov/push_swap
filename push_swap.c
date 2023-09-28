@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 21:50:42 by boiarinov         #+#    #+#             */
-/*   Updated: 2023/09/27 22:40:38 by boiarinov        ###   ########.fr       */
+/*   Created: 2023/09/28 16:53:41 by aboiarin          #+#    #+#             */
+/*   Updated: 2023/09/28 16:54:04 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "libft.h"
+#include "push_swap.h"
 
 // Define the stacks and their top indices
 int stack_a[MAX_STACK_SIZE];
