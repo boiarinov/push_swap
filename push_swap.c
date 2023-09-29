@@ -6,7 +6,7 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:41 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/09/28 16:54:04 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:45:51 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,144 +14,143 @@
 #include <stdio.h>
 #include "push_swap.h"
 
-// Define the stacks and their top indices
-int stack_a[MAX_STACK_SIZE];
-int stack_b[MAX_STACK_SIZE];
-int top_a = -1;
-int top_b = -1;
-
-// Function to push an element onto stack a
-void pa(int value) {
-    if (top_a < MAX_STACK_SIZE - 1) {
-        stack_a[++top_a] = value;
-    } else {
-        printf("Stack A is full\n");
-        exit(1);
-    }
+void sa(int *a, unsigned int size)
+{
+	int	t;
+	
+	t = a[size];
+	a[size] = a[size - 1];
+	a[size - 1] = t;
 }
 
-// Function to push an element onto stack b
-void pb(int value) {
-    if (top_b < MAX_STACK_SIZE - 1) {
-        stack_b[++top_b] = value;
-    } else {
-        printf("Stack B is full\n");
-        exit(1);
-    }
+void sb(int *b, unsigned int size)
+{
+	int	t;
+	
+	t = b[size];
+	b[size] = b[size - 1];
+	b[size - 1] = t;
 }
 
-// Function to swap the top two elements of stack a
-void sa() {
-    if (top_a >= 1) {
-        int temp = stack_a[top_a];
-        stack_a[top_a] = stack_a[top_a - 1];
-        stack_a[top_a - 1] = temp;
-    }
+void ss(int *a, int *b, unsigned int size)
+{
+	sa(&a, size);
+	sb(&b, size);
 }
 
-// Function to swap the top two elements of stack b
-void sb() {
-    if (top_b >= 1) {
-        int temp = stack_b[top_b];
-        stack_b[top_b] = stack_b[top_b - 1];
-        stack_b[top_b - 1] = temp;
-    }
+void pa(int *a, int *b, unsigned int size)
+{
+	int	t;
+	int	c;
+
+	c = 0;
+	while (size > 0)
+	{
+		if (b[size] != 0)
+		{
+			c = 1;
+			break ;
+		}
+		size--;
+	}
+	if (c == 1)
+	{
+		t = a[size];
+		a[size] = 0;
+		b[size] = t;
+	}
 }
 
-// Function to push the top element of stack b onto stack a
-void pa() {
-    if (top_b >= 0) {
-        push_a(stack_b[top_b]);
-        top_b--;
-    }
+void pb(int *a, int *b, unsigned int size)
+{
+	int	t;
+	int	c;
+
+	c = 0;
+	while (size > 0)
+	{
+		if (a[size] != 0)
+		{
+			c = 1;
+			break ;
+		}
+		size--;
+	}
+	if (c == 1)
+	{
+		t = b[size];
+		b[size] = 0;
+		a[size] = t;
+	}
 }
 
-// Function to push the top element of stack a onto stack b
-void pb() {
-    if (top_a >= 0) {
-        push_b(stack_a[top_a]);
-        top_a--;
-    }
+void ra(int *a, unsigned int size)
+{
+	int	t;
+
+	t = a[size];
+	while (size > 1)
+	{
+		a[size] = a[size - 1];
+		size--;
+	}
+	a[0] = t;
 }
 
-// Function to rotate stack a
-void ra() {
-    if (top_a >= 1) {
-        int temp = stack_a[top_a];
-        for (int i = top_a; i > 0; i--) {
-            stack_a[i] = stack_a[i - 1];
-        }
-        stack_a[0] = temp;
-    }
+
+void rb(int *b, unsigned int size)
+{
+	int	t;
+
+	t = b[size];
+	while (size > 1)
+	{
+		b[size] = b[size - 1];
+		size--;
+	}
+	b[0] = t;
 }
 
-// Function to rotate stack b
-void rb() {
-    if (top_b >= 1) {
-        int temp = stack_b[top_b];
-        for (int i = top_b; i > 0; i--) {
-            stack_b[i] = stack_b[i - 1];
-        }
-        stack_b[0] = temp;
-    }
+void rr(int *a, int *b, unsigned int size)
+{
+	ra(&a, size);
+	rb(&b, size);
 }
 
-// Function to reverse rotate stack a
-void rra() {
-    if (top_a >= 1) {
-        int temp = stack_a[0];
-        for (int i = 0; i < top_a; i++) {
-            stack_a[i] = stack_a[i + 1];
-        }
-        stack_a[top_a] = temp;
-    }
+void rra(int *a, unsigned int size)
+{
+	int	t;
+	int	i;
+
+	t = a[0];
+	i = 0;
+	while (i <= size - 1)
+	{
+		a[i] = a[i + 1];
+		i++;
+	}
+	a[size] = t;
 }
 
-// Function to reverse rotate stack b
-void rrb() {
-    if (top_b >= 1) {
-        int temp = stack_b[0];
-        for (int i = 0; i < top_b; i++) {
-            stack_b[i] = stack_b[i + 1];
-        }
-        stack_b[top_b] = temp;
-    }
+void rrb(int *b, unsigned int size)
+{
+	int	t;
+	int	i;
+
+	t = b[0];
+	i = 0;
+	while (i <= size - 1)
+	{
+		b[i] = b[i + 1];
+		i++;
+	}
+	b[size] = t;
 }
 
-// Function to perform 'ss' operation
-void ss() {
-    sa();
-    sb();
-}
-
-// Function to perform 'rr' operation
-void rr() {
-    ra();
-    rb();
-}
-
-// Function to perform 'rrr' operation
-void rrr() {
-    rra();
-    rrb();
-}
-
-// Function to print the contents of stack a
-void print_stack_a() {
-    printf("Stack A: ");
-    for (int i = 0; i <= top_a; i++) {
-        printf("%d ", stack_a[i]);
-    }
-    printf("\n");
-}
-
-// Function to print the contents of stack b
-void print_stack_b() {
-    printf("Stack B: ");
-    for (int i = 0; i <= top_b; i++) {
-        printf("%d ", stack_b[i]);
-    }
-    printf("\n");
+void rrr(int *a, int *b, unsigned int size)
+{
+	rra(&a, size);
+	rrb(&b, size);
 }
 
 int	main (int argc, char **argv)
@@ -159,11 +158,13 @@ int	main (int argc, char **argv)
 	int	*a;
 	int	*b;
 	int	i;
+	unsigned int size;
 	
 	if (argc > 1)
 	{
-		a = (int *)malloc(sizeof(int) * argc);
-		b = (int *)malloc(sizeof(int) * argc);
+		size = argc;
+		a = (int *)malloc(sizeof(int) * size);
+		b = (int *)malloc(sizeof(int) * size);
 		if (a == 0 || b == 0)
 		{
 			printf("Malloc error\n");
@@ -174,7 +175,9 @@ int	main (int argc, char **argv)
 			a[i] = ft_atoi(argv[i]);
 			i++;
 		}
-		push_swap(a, b);
+		push_swap(a, b, size);
+		free(a);
+		free(b);
 	}
 	return (0);
 }
