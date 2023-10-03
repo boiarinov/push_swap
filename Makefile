@@ -6,7 +6,7 @@
 #    By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 16:53:13 by aboiarin          #+#    #+#              #
-#    Updated: 2023/09/29 13:32:38 by aboiarin         ###   ########.fr        #
+#    Updated: 2023/10/03 15:45:36 by aboiarin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,9 @@ RM = rm -f
 
 NAME = push_swap
 
-SRC = push_swap.c
+SRC = push_swap.c push.c swap.c rotate.c reverse_rotate.c cases.c
 
 OBJ = $(SRC:.c=.o)
-OBJ_L = $(SRC_L:.c=.o)
 
 all: start_message $(NAME) success_message
 
@@ -30,11 +29,11 @@ bonus: all
 .o:		.c
 		$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):	$(OBJ_S)
-	@$(CC) $(CFLAGS) $(OBJ_S) -o $(NAME_S)
+$(NAME):	$(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	@$(RM) $(OBJ_S) $(OBJ_C)
+	@$(RM) $(OBJ)
 	@echo 'Object files removed ✨'
 
 start_message:
@@ -47,7 +46,7 @@ re_message:
 	@echo 'Starting over... ⏪'
 
 fclean:	clean
-		@$(RM) $(NAME_S) $(NAME_C)
+		@$(RM) $(NAME)
 		@echo 'Executables removed ✨'
 
 re: re_message fclean all

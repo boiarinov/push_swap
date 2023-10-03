@@ -1,39 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cases.c                                            :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 11:39:07 by aboiarin          #+#    #+#             */
+/*   Created: 2023/10/03 15:37:16 by aboiarin          #+#    #+#             */
 /*   Updated: 2023/10/03 15:44:20 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	if_three(int *a, int size)
+void	pa(int *a, int *b, int size)
 {
-	if (a[0] > a[1] && a[1] < a[2] && a[2] > a[0])
-		sa(a);
-	else if (a[0] > a[1] && a[1] > a[2] && a[2] < a[0])
+	int	t;
+	int	c;
+	int	i;
+
+	c = 0;
+	i = 0;
+	while (size > 0)
 	{
-		sa(a);
-		rra(a, size);
+		if (b[size] != 0)
+		{
+			c = 1;
+			break ;
+		}
+		size--;
 	}
-	else if (a[0] > a[1] && a[1] < a[2] && a[2] < a[0])
-		ra(a, size);
-	else if (a[0] < a[1] && a[1] > a[2] && a[2] > a[0])
+	if (c != 0 && a[i] == 0)
 	{
-		sa(a);
-		ra(a, size);
+		t = b[size];
+		b[size] = 0;
+		a[i] = t;
+		i++;
 	}
-	else if (a[0] < a[1] && a[1] > a[2] && a[2] < a[0])
-		rra(a, size);
+	printf("pa\n");
 }
 
-void	if_five(int	*a, int *b, int size)
+void	pb(int *a, int *b, int size)
 {
-	pb(a, b, size);
-	pb(a, b, size);
+	int	t;
+	int	c;
+	int	i;
+
+	c = 0;
+	i = 0;
+	while (size > 0)
+	{
+		if (a[size] != 0)
+		{
+			c = 1;
+			break ;
+		}
+		size--;
+	}
+	if (c != 0 && b[i] == 0)
+	{
+		t = a[size];
+		a[size] = 0;
+		b[i] = t;
+		i++;
+	}
+	printf("pb\n");
 }
