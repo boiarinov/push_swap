@@ -6,7 +6,7 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:41 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/03 14:02:04 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:20:12 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sa(int *a)
 	t = a[0];
 	a[0] = a[1];
 	a[1] = t;
+	printf("sa\n");
 }
 
 void	sb(int *b)
@@ -30,12 +31,14 @@ void	sb(int *b)
 	t = b[0];
 	b[0] = b[1];
 	b[1] = t;
+	printf("sb\n");
 }
 
 void	ss(int *a, int *b)
 {
 	sa(a);
 	sb(b);
+	printf("ss\n");
 }
 
 void	pa(int *a, int *b, unsigned int size)
@@ -62,6 +65,7 @@ void	pa(int *a, int *b, unsigned int size)
 		a[i] = t;
 		i++;
 	}
+	printf("pa\n");
 }
 
 void	pb(int *a, int *b, unsigned int size)
@@ -88,6 +92,7 @@ void	pb(int *a, int *b, unsigned int size)
 		b[i] = t;
 		i++;
 	}
+	printf("pb\n");
 }
 
 void	ra(int *a, unsigned int size)
@@ -103,6 +108,7 @@ void	ra(int *a, unsigned int size)
 		i++;
 	}
 	a[size] = t;
+	printf("ra\n");
 }
 
 void	rb(int *b, unsigned int size)
@@ -118,12 +124,14 @@ void	rb(int *b, unsigned int size)
 		i++;
 	}
 	b[size] = t;
+	printf("rb\n");
 }
 
 void	rr(int *a, int *b, unsigned int size)
 {
 	ra(a, size);
 	rb(b, size);
+	printf("rr\n");
 }
 
 void	rra(int *a, unsigned int size)
@@ -139,6 +147,7 @@ void	rra(int *a, unsigned int size)
 		i--;
 	}
 	a[0] = t;
+	printf("rra\n");
 }
 
 void	rrb(int *b, unsigned int size)
@@ -154,12 +163,14 @@ void	rrb(int *b, unsigned int size)
 		i--;
 	}
 	b[0] = t;
+	printf("rrb\n");
 }
 
 void	rrr(int *a, int *b, unsigned int size)
 {
 	rra(a, size);
 	rrb(b, size);
+	printf("rrr\n");
 }
 
 int	main(int argc, char **argv)
@@ -191,7 +202,7 @@ int	main(int argc, char **argv)
 		if (size == 3)
 			if_three(a, size - 1);
 		else if (size == 5)
-			if_five(a, b, size - 1);
+			if_more(a, b, size - 1);
 		i = 0;
 		while (i < size)
 		{
