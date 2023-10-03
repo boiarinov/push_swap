@@ -6,7 +6,7 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:39:07 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/03 15:44:20 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:38:59 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,12 @@ void	if_five(int	*a, int *b, int size)
 {
 	pb(a, b, size);
 	pb(a, b, size);
+	if_three(a, size);
+	while (size != 0)
+	{
+		if (size == 3)
+		{
+
+		}
+	}
 }

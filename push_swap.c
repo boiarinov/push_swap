@@ -6,7 +6,7 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:41 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/03 15:44:20 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:38:57 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	int				*b;
 	int				i;
 	int				j;
-	int	size;
+	int				size;
 
 	i = 0;
 	j = 1;
