@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:39:28 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/03 16:38:59 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/05 23:24:46 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	rra(int *a, int size)
 
 	t = a[size];
 	i = size;
-	while (i > 0)
+	while (a[i - 1] != 0)
 	{
 		a[i] = a[i - 1];
 		i--;
 	}
-	a[0] = t;
+	a[i] = t;
 	printf("rra\n");
 }
 
@@ -35,12 +35,12 @@ void	rrb(int *b, int size)
 
 	t = b[size];
 	i = size;
-	while (i > 0)
+	while (b[i - 1] != 0)
 	{
 		b[i] = b[i - 1];
 		i--;
 	}
-	b[0] = t;
+	b[i] = t;
 	printf("rrb\n");
 }
 

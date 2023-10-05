@@ -6,7 +6,7 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:48 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/05 14:44:54 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/10/05 23:40:53 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 
 void	if_three(int *a, int size);
 void	if_five(int	*a, int *b, int size);
-void	sa(int *a);
-void	sb(int *b);
-void	ss(int *a, int *b);
+void	if_more(void);
+void	sa(int *a, int size);
+void	sb(int *b, int size);
+void	ss(int *a, int *b, int size);
 void	pa(int *a, int *b, int size);
 void	pb(int *a, int *b, int size);
 void	ra(int *a, int size);
