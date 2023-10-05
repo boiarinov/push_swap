@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:38:33 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/03 15:44:20 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:07:28 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	ra(int *a, int size)
 
 	t = a[0];
 	i = 0;
-	while (i < size)
+	if (a[i] != 0)
 	{
-		a[i] = a[i + 1];
-		i++;
+		while (i < size)
+		{
+			a[i] = a[i + 1];
+			i++;
+		}
 	}
 	a[size] = t;
 	printf("ra\n");

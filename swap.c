@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:53 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/03 15:38:02 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:07:32 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,30 @@
 void	sa(int *a)
 {
 	int	t;
+	int	i;
 
-	t = a[0];
-	a[0] = a[1];
-	a[1] = t;
+	i = 0;
+	if (a[i] != 0)
+	{
+		t = a[i];
+		a[i] = a[i + 1];
+		a[i + 1] = t;
+	}
 	printf("sa\n");
 }
 
 void	sb(int *b)
 {
 	int	t;
+	int	i;
 
-	t = b[0];
-	b[0] = b[1];
-	b[1] = t;
+	i = 0;
+	if (b[i] != 0)
+	{
+		t = b[i];
+		b[i] = b[i + 1];
+		b[i + 1] = t;
+	}
 	printf("sb\n");
 }
 

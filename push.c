@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:16 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/03 15:44:20 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:43:03 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,47 @@
 void	pa(int *a, int *b, int size)
 {
 	int	t;
-	int	c;
 	int	i;
 
-	c = 0;
 	i = 0;
-	while (size > 0)
+	while (i < size)
 	{
-		if (b[size] != 0)
-		{
-			c = 1;
+		if (b[i] != 0)
 			break ;
-		}
-		size--;
-	}
-	if (c != 0 && a[i] == 0)
-	{
-		t = b[size];
-		b[size] = 0;
-		a[i] = t;
 		i++;
 	}
+	while (size >= 0)
+	{
+		if (a[size] == 0)
+			break ;
+		size--;
+	}
+	t = b[i];
+	b[i] = 0;
+	a[size] = t;
 	printf("pa\n");
 }
 
 void	pb(int *a, int *b, int size)
 {
 	int	t;
-	int	c;
 	int	i;
 
-	c = 0;
 	i = 0;
-	while (size > 0)
+	while (i < size)
 	{
-		if (a[size] != 0)
-		{
-			c = 1;
+		if (a[i] != 0)
 			break ;
-		}
-		size--;
-	}
-	if (c != 0 && b[i] == 0)
-	{
-		t = a[size];
-		a[size] = 0;
-		b[i] = t;
 		i++;
 	}
+	while (size >= 0)
+	{
+		if (b[size] == 0)
+			break ;
+		size--;
+	}
+	t = a[i];
+	a[i] = 0;
+	b[size] = t;
 	printf("pb\n");
 }
