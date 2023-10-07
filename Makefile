@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+         #
+#    By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 16:53:13 by aboiarin          #+#    #+#              #
-#    Updated: 2023/10/03 15:45:36 by aboiarin         ###   ########.fr        #
+#    Updated: 2023/10/06 18:22:32 by boiarinov        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM = rm -f
 
 NAME = push_swap
 
-SRC = push_swap.c push.c swap.c rotate.c reverse_rotate.c cases.c
+SRC = push_swap.c push.c swap.c rotate.c reverse_rotate.c cases.c utils.c
 
 OBJ = $(SRC:.c=.o)
 

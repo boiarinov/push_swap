@@ -6,7 +6,7 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:39:07 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/05 23:41:11 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/10/07 15:26:34 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	if_three(int *a, int size)
 		rra(a, size);
 }
 
-void	p4(int *a, int *b, int size)
+void	pf(int *a, int *b, int size)
 {
 	if (a[size - 2] > b[size - 1])
 		pa(a, b, size);
@@ -55,7 +55,7 @@ void	p4(int *a, int *b, int size)
 	}
 }
 
-void	p5(int *a, int *b, int size)
+void	pl(int *a, int *b, int size)
 {
 	if (a[size - 3] > b[size])
 		pa(a, b, size);
@@ -86,46 +86,66 @@ void	p5(int *a, int *b, int size)
 	}
 }
 
+void	if_four(int	*a, int *b, int size)
+{
+	pb(a, b, size);
+	if_three(a, size);
+	pl(a, b, size);
+}
+
 void	if_five(int	*a, int *b, int size)
 {
-	int	i;
-
-	i = 0;
 	pb(a, b, size);
 	pb(a, b, size);
 	if_three(a, size);
-	while (i <= size)
-	{
-		printf("%i ", a[i]);
-		i++;
-	}
-	printf("\n");
-	i = 0;
-	while (i <= size)
-	{
-		printf("%i ", b[i]);
-		i++;
-	}
-	printf("\n");
-	p4(a, b, size);
-	i = 0;
-	while (i <= size)
-	{
-		printf("%i ", a[i]);
-		i++;
-	}
-	printf("\n");
-	i = 0;
-	while (i <= size)
-	{
-		printf("%i ", b[i]);
-		i++;
-	}
-	printf("\n");
-	p5(a, b, size);
+	pf(a, b, size);
+	pl(a, b, size);
 }
 
-void	if_more(void)
+void	if_more(int *a, int *b, int size)
 {
-	return ;
+	int	i;
+	int	t;
+
+	i = size;
+	t = 0;
+	while (i >= 1)
+	{
+		t = smallest(a, size);
+		if (t == 0)
+			break ;
+		b[i] = t;
+		i--;
+	}
+	i = 0;
+	while (i <= size)
+	{
+		if (a[i] != 0)
+		{
+			a[size] = a[i];
+			a[i] = 0;
+			break ;
+		}
+		i++;
+	}
+	i = 0;
+	while (i <= size)
+	{
+		printf("%i ", a[i]);
+		i++;
+	}
+	printf("\n");
+	i = 0;
+	while (i <= size)
+	{
+		printf("%i ", b[i]);
+		i++;
+	}
+	printf("\n");
+	i = 0;
+	while (i <= size)
+	{
+		pa(a, b, size);
+		i++;
+	}
 }

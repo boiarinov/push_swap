@@ -6,7 +6,7 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:41 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/05 23:40:44 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/10/06 18:17:04 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,18 @@ int	main(int argc, char **argv)
 		while (i < size)
 		{
 			a[i] = atoi(argv[j]);
+			b[i] = 0;
 			i++;
 			j++;
 		}
 		if (size == 3)
 			if_three(a, size - 1);
+		else if (size == 4)
+			if_four(a, b, size - 1);
 		else if (size == 5)
 			if_five(a, b, size - 1);
 		else
-			if_more();
+			if_more(a, b, size - 1);
 		i = 0;
 		while (i < size)
 		{

@@ -1,66 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 15:38:33 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/06 17:44:52 by boiarinov        ###   ########.fr       */
+/*   Created: 2023/10/06 18:09:06 by boiarinov         #+#    #+#             */
+/*   Updated: 2023/10/07 15:25:00 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(int *a, int size)
+int	smallest(int *a, int size)
 {
-	int	t;
 	int	i;
+	int	t;
+	int	index;
 
-	i = 0;
-	while (i < size)
+	i = size;
+	t = 0;
+	index = 0;
+	while (i > 0)
 	{
 		if (a[i] != 0)
 		{
 			t = a[i];
-			while (i < size)
-			{
-				a[i] = a[i + 1];
-				i++;
-			}
-			a[size] = t;
+			break ;
 		}
-		i++;
+		i--;
 	}
-	printf("ra\n");
-}
-
-void	rb(int *b, int size)
-{
-	int	t;
-	int	i;
-
-	i = 0;
-	while (i < size)
+	while (i > 0)
 	{
-		if (b[i] != 0)
+		if (t > a[i] && a[i] != 0)
 		{
-			t = b[i];
-			while (i < size)
-			{
-				b[i] = b[i + 1];
-				i++;
-			}
-			b[size] = t;
+			t = a[i];
+			index = i;
 		}
-		i++;
+		i--;
 	}
-	printf("rb\n");
-}
-
-void	rr(int *a, int *b, int size)
-{
-	ra(a, size);
-	rb(b, size);
-	printf("rr\n");
+	a[index] = 0;
+	return (t);
 }
