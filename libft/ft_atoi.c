@@ -1,52 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 15:39:28 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/24 14:44:30 by aboiarin         ###   ########.fr       */
+/*   Created: 2023/03/30 12:39:23 by aboiarin          #+#    #+#             */
+/*   Updated: 2023/05/24 16:47:36 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	rra(int *a, int size)
+int	ft_atoi(const char *str)
 {
-	int	t;
 	int	i;
+	int	n;
+	int	r;
 
-	t = a[size];
-	i = size;
-	while (a[i - 1] != 0)
+	i = 0;
+	n = 1;
+	r = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	if (str[i] == '-' || str[i] == '+')
 	{
-		a[i] = a[i - 1];
-		i--;
+		if (str[i] == '-')
+		{
+			n *= -1;
+		}
+		i++;
 	}
-	a[i] = t;
-	ft_printf("rra\n");
-}
-
-void	rrb(int *b, int size)
-{
-	int	t;
-	int	i;
-
-	t = b[size];
-	i = size;
-	while (b[i - 1] != 0)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		b[i] = b[i - 1];
-		i--;
+		r = (r * 10) + (str[i] - '0');
+		i++;
 	}
-	b[i] = t;
-	ft_printf("rrb\n");
-}
-
-void	rrr(int *a, int *b, int size)
-{
-	rra(a, size);
-	rrb(b, size);
-	ft_printf("rrr\n");
+	return (r * n);
 }

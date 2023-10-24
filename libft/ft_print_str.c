@@ -1,52 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 15:39:28 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/24 14:44:30 by aboiarin         ###   ########.fr       */
+/*   Created: 2023/06/01 17:39:20 by aboiarin          #+#    #+#             */
+/*   Updated: 2023/10/24 16:16:48 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	rra(int *a, int size)
+int	ft_print_str(char *str)
 {
-	int	t;
-	int	i;
+	int	count;
 
-	t = a[size];
-	i = size;
-	while (a[i - 1] != 0)
+	count = 0;
+	if (str == NULL)
 	{
-		a[i] = a[i - 1];
-		i--;
+		write(1, "(null)", 6);
+		return (6);
 	}
-	a[i] = t;
-	ft_printf("rra\n");
-}
-
-void	rrb(int *b, int size)
-{
-	int	t;
-	int	i;
-
-	t = b[size];
-	i = size;
-	while (b[i - 1] != 0)
+	while (*str)
 	{
-		b[i] = b[i - 1];
-		i--;
+		count += ft_print_c(*str);
+		str++;
 	}
-	b[i] = t;
-	ft_printf("rrb\n");
-}
-
-void	rrr(int *a, int *b, int size)
-{
-	rra(a, size);
-	rrb(b, size);
-	ft_printf("rrr\n");
+	return (count);
 }

@@ -3,42 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:09:06 by boiarinov         #+#    #+#             */
-/*   Updated: 2023/10/07 15:25:00 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/10/24 17:11:32 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	smallest(int *a, int size)
+void	pf(int *a, int *b, int size)
 {
-	int	i;
-	int	t;
-	int	index;
+	if (a[size - 2] > b[size - 1])
+		pa(a, b, size);
+	else if (a[size - 2] < b[size - 1] && a[size - 1] > b[size - 1])
+	{
+		pa(a, b, size);
+		sa(a, size);
+	}
+	else if (a[size - 1] < b[size - 1] && a[size] > b[size - 1])
+	{
+		rra(a, size);
+		pa(a, b, size);
+		rra(a, size);
+		rra(a, size);
+	}
+	else if (a[size] < b[size - 1])
+	{
+		pa(a, b, size);
+		ra(a, size);
+	}
+}
 
-	i = size;
-	t = 0;
-	index = 0;
-	while (i > 0)
+void	pl(int *a, int *b, int size)
+{
+	if (a[size - 3] > b[size])
+		pa(a, b, size);
+	else if (a[size - 3] < b[size] && a[size - 2] > b[size])
 	{
-		if (a[i] != 0)
-		{
-			t = a[i];
-			break ;
-		}
-		i--;
+		ra(a, size);
+		pa(a, b, size);
+		rra(a, size);
 	}
-	while (i > 0)
+	else if (a[size - 2] < b[size] && a[size - 1] > b[size])
 	{
-		if (t > a[i] && a[i] != 0)
-		{
-			t = a[i];
-			index = i;
-		}
-		i--;
+		ra(a, size);
+		pa(a, b, size);
+		sa(a, size);
+		rra(a, size);
 	}
-	a[index] = 0;
-	return (t);
+	else if (a[size - 1] < b[size] && a[size] > b[size])
+	{
+		rra(a, size);
+		pa(a, b, size);
+		ra(a, size);
+		ra(a, size);
+	}
+	else if (a[size] < b[size])
+		pl_2(a, b, size);
+}
+
+void	pl_2(int *a, int *b, int size)
+{
+	pa(a, b, size);
+	ra(a, size);
 }

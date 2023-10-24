@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:38:33 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/06 17:44:52 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/10/24 14:44:30 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ra(int *a, int size)
 		}
 		i++;
 	}
-	printf("ra\n");
+	ft_printf("ra\n");
 }
 
 void	rb(int *b, int size)
@@ -55,12 +55,12 @@ void	rb(int *b, int size)
 		}
 		i++;
 	}
-	printf("rb\n");
+	ft_printf("rb\n");
 }
 
 void	rr(int *a, int *b, int size)
 {
 	ra(a, size);
 	rb(b, size);
-	printf("rr\n");
+	ft_printf("rr\n");
 }

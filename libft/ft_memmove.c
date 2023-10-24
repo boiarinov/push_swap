@@ -1,52 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 15:39:28 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/24 14:44:30 by aboiarin         ###   ########.fr       */
+/*   Created: 2023/05/08 16:43:58 by aboiarin          #+#    #+#             */
+/*   Updated: 2023/05/24 16:50:11 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	rra(int *a, int size)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	t;
-	int	i;
+	size_t	i;
 
-	t = a[size];
-	i = size;
-	while (a[i - 1] != 0)
+	if (!dest && !src)
+		return (0);
+	i = 0;
+	if ((size_t)dest - (size_t)src < n)
 	{
-		a[i] = a[i - 1];
-		i--;
+		i = n - 1;
+		while (i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i--;
+		}
 	}
-	a[i] = t;
-	ft_printf("rra\n");
-}
-
-void	rrb(int *b, int size)
-{
-	int	t;
-	int	i;
-
-	t = b[size];
-	i = size;
-	while (b[i - 1] != 0)
+	else
 	{
-		b[i] = b[i - 1];
-		i--;
+		while (i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
 	}
-	b[i] = t;
-	ft_printf("rrb\n");
-}
-
-void	rrr(int *a, int *b, int size)
-{
-	rra(a, size);
-	rrb(b, size);
-	ft_printf("rrr\n");
+	return (dest);
 }

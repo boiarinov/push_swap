@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:53 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/06 17:44:52 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/10/24 14:44:30 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sa(int *a, int size)
 	t = a[i];
 	a[i] = a[i + 1];
 	a[i + 1] = t;
-	printf("sa\n");
+	ft_printf("sa\n");
 }
 
 void	sb(int *b, int size)
@@ -49,12 +49,12 @@ void	sb(int *b, int size)
 	t = b[i];
 	b[i] = b[i + 1];
 	b[i + 1] = t;
-	printf("sb\n");
+	ft_printf("sb\n");
 }
 
 void	ss(int *a, int *b, int size)
 {
 	sa(a, size);
 	sb(b, size);
-	printf("ss\n");
+	ft_printf("ss\n");
 }

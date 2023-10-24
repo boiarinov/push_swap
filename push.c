@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:16 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/07 15:28:47 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/10/24 14:44:30 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	pa(int *a, int *b, int size)
 	t = b[i];
 	b[i] = 0;
 	a[size] = t;
-	printf("pa\n");
+	ft_printf("pa\n");
 }
 
 void	pb(int *a, int *b, int size)
@@ -57,5 +57,5 @@ void	pb(int *a, int *b, int size)
 	t = a[i];
 	a[i] = 0;
 	b[size] = t;
-	printf("pb\n");
+	ft_printf("pb\n");
 }

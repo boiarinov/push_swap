@@ -1,52 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 15:39:28 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/24 14:44:30 by aboiarin         ###   ########.fr       */
+/*   Created: 2023/05/08 18:11:57 by aboiarin          #+#    #+#             */
+/*   Updated: 2023/05/24 16:51:08 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	rra(int *a, int size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	t;
-	int	i;
+	char			*r;
+	unsigned int	i;
+	unsigned int	l;
 
-	t = a[size];
-	i = size;
-	while (a[i - 1] != 0)
+	i = 0;
+	l = 0;
+	if (s1 == 0 || s2 == 0)
+		return (0);
+	r = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (r == 0)
+		return (0);
+	while (s1[l])
 	{
-		a[i] = a[i - 1];
-		i--;
+		r[i] = s1[l];
+		i++;
+		l++;
 	}
-	a[i] = t;
-	ft_printf("rra\n");
-}
-
-void	rrb(int *b, int size)
-{
-	int	t;
-	int	i;
-
-	t = b[size];
-	i = size;
-	while (b[i - 1] != 0)
+	l = 0;
+	while (s2[l])
 	{
-		b[i] = b[i - 1];
-		i--;
+		r[i + l] = s2[l];
+		l++;
 	}
-	b[i] = t;
-	ft_printf("rrb\n");
-}
-
-void	rrr(int *a, int *b, int size)
-{
-	rra(a, size);
-	rrb(b, size);
-	ft_printf("rrr\n");
+	r[i + l] = '\0';
+	return (r);
 }
