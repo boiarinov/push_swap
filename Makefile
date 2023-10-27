@@ -6,7 +6,7 @@
 #    By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 16:53:13 by aboiarin          #+#    #+#              #
-#    Updated: 2023/10/24 17:14:54 by aboiarin         ###   ########.fr        #
+#    Updated: 2023/10/27 13:49:07 by aboiarin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(NAME):	$(LIBFT) $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
-	@echo 'Making libft... 📀'
+	@echo 'Compiling libft... 📀'
 	@make -C $(LIBFT_PATH) all
 	@echo 'libft done ✅'
 	

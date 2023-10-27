@@ -6,11 +6,12 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:48 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/24 17:11:34 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:37:00 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
+#include <limits.h>
 
 void	if_three(int *a, int size);
 void	if_four(int	*a, int *b, int size);

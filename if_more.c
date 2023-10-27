@@ -6,7 +6,7 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:34:02 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/24 17:26:54 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:22:28 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sort_copy(int *copy, int size)
 {
-	int i;
-	int j;
-	int t;
+	int	i;
+	int	j;
+	int	t;
 
 	i = 0;
 	j = 0;
@@ -39,7 +39,7 @@ void	sort_copy(int *copy, int size)
 
 void	swap_1(int *copy, int *copy_swap, int *a, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -52,8 +52,8 @@ void	swap_1(int *copy, int *copy_swap, int *a, int size)
 
 void	swap_2(int *copy, int *copy_swap, int *a, int size)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -72,9 +72,9 @@ void	swap_2(int *copy, int *copy_swap, int *a, int size)
 
 void	swap_3(int *a, int *b, int size)
 {
-	int maximum_number;
-	int maximum_bits;
-	int loop_through[2];
+	int	maximum_number;
+	int	maximum_bits;
+	int	loop_through[2];
 
 	maximum_number = size - 1;
 	maximum_bits = 0;
@@ -86,13 +86,13 @@ void	swap_3(int *a, int *b, int size)
 	{
 		loop_through[1] = 0;
 		while (loop_through[1] < size)
-			{
-				if (((a[0] >> loop_through[0]) & 1) == 1)
-					ra(a, size);
-				else
-					pb(a, b, size);
-				++loop_through[1];
-			}
+		{
+			if (((a[0] >> loop_through[0]) & 1) == 1)
+				ra(a, size);
+			else
+				pb(a, b, size);
+			++loop_through[1];
+		}
 		while (size != 0)
 		{
 			pa(a, b, size);
