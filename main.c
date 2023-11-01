@@ -6,7 +6,7 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:41 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/27 15:39:24 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:41:00 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	main(int argc, char **argv)
 	int				i;
 	int				size;
 
-	i = 0;
 	if (argc > 2)
 	{
 		size = argc - 1;
@@ -105,18 +104,16 @@ int	main(int argc, char **argv)
 		b = (int *)malloc(sizeof(int) * size);
 		if (malloc_error(a, b))
 			return (0);
-		ft_memset(a, 0, sizeof(int));
-		ft_memset(b, 0, sizeof(int));
 		if (arrays(a, b, argv, size) == 0)
 			ft_sort(a, b, size);
 		else
 			ft_printf("Error\n");
-/*		i = 0;
+		i = 0;
 		while (i < size)
 		{
 			ft_printf("%i ", a[i]);
 			i++;
-		}*/
+		}
 		free(a);
 		free(b);
 	}

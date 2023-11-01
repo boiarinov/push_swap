@@ -6,7 +6,7 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:39:07 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/27 13:50:53 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:15:33 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	if_five(int	*a, int *b, int size)
 	pl(a, b, size);
 }
 
-int	if_sorted(int *a, int size)
+int	if_sorted(int *array, int size)
 {
 	int	i;
 	int	c;
@@ -62,7 +62,7 @@ int	if_sorted(int *a, int size)
 	c = 1;
 	while (i < size)
 	{
-		if (a[i] > a[i + 1])
+		if (array[i] > array[i + 1])
 			c = 0;
 		i++;
 	}

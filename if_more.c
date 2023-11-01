@@ -6,112 +6,171 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:34:02 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/27 13:22:28 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:40:01 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_copy(int *copy, int size)
+int	smallest(int *a, int size)
+{
+	int	r;
+	int	i;
+
+	i = 0;
+	r = 0;
+	while (i <= size)
+	{
+		if (a[i] != 0)
+		{
+			r = a[i];
+			break ;
+		}
+		i++;
+	}
+	i = 0;
+	while (i <= size)
+	{
+		if (r != 0 && r > a[i] && a[i] != 0)
+			r = a[i];
+		i++;
+	}
+	if (r == 0)
+		return (-1);
+	return (r);
+}
+
+int	current_array_size(int *a, int size)
 {
 	int	i;
-	int	j;
+	int	c;
+
+	i = 0;
+	c = 0;
+	while (i <= size)
+	{
+		if (a[i] != 0)
+			c++;
+		i++;
+	}
+	return (c);
+}
+
+int	top_index(int *a, int size)
+{
+	int	i;
 	int	t;
 
 	i = 0;
-	j = 0;
-	while (i < size)
+	t = 0;
+	while (i <= size)
 	{
-		j = i + 1;
-		while (j < size)
+		if (a[i] != 0)
 		{
-			if (copy[i] > copy[j])
-			{
-				t = copy[i];
-				copy[i] = copy[j];
-				copy[j] = t;
-			}
-			j++;
+			t = i;
+			break ;
 		}
 		i++;
 	}
-}
-
-void	swap_1(int *copy, int *copy_swap, int *a, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		copy[i] = a[i];
-		copy_swap[i] = a[i];
-		i++;
-	}
-}
-
-void	swap_2(int *copy, int *copy_swap, int *a, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			if (copy_swap[i] == copy[j])
-				a[i] = j;
-			j++;
-		}
-		++i;
-	}
-}
-
-void	swap_3(int *a, int *b, int size)
-{
-	int	maximum_number;
-	int	maximum_bits;
-	int	loop_through[2];
-
-	maximum_number = size - 1;
-	maximum_bits = 0;
-	loop_through[0] = 0;
-	loop_through[1] = 0;
-	while ((maximum_number >> maximum_bits) != 0)
-		++maximum_bits;
-	while (loop_through[0] < maximum_bits)
-	{
-		loop_through[1] = 0;
-		while (loop_through[1] < size)
-		{
-			if (((a[0] >> loop_through[0]) & 1) == 1)
-				ra(a, size);
-			else
-				pb(a, b, size);
-			++loop_through[1];
-		}
-		while (size != 0)
-		{
-			pa(a, b, size);
-			++loop_through[0];
-		}
-	}
+	return (t);
 }
 
 void	if_more(int *a, int *b, int size)
 {
-	int	*copy;
-	int	*copy_swap;
+	int	t;
+	int	i;
+	int	index;
+	int	j;
 
-	copy = (int *)malloc(sizeof(int) * size);
-	copy_swap = (int *)malloc(sizeof(int) * size);
-	swap_1(copy, copy_swap, a, size);
-	sort_copy(copy, size);
-	swap_2(copy, copy_swap, a, size);
-	free(copy);
-	free(copy_swap);
-	swap_3(a, b, size);
+	i = 0;
+	t = 0;
+	j = 0;
+	index = 0;
+	while (j < size)
+	{
+		t = smallest(a, size);
+		ft_printf("Smallest: %i\n", t);
+		if (t > 0)
+		{
+			i = 0;
+			while (i <= size)
+			{
+				if (t == a[i] && t != 0)
+				{
+					index = i;
+					break ;
+				}
+				i++;
+			}
+			ft_printf("Index: %i\n", index);
+			if (index == top_index(a, size))
+				pb(a, b, size);
+			else if (a[index] == a[size])
+			{
+				rra(a, size);
+				pb(a, b, size);
+			}
+			else
+			{
+				i = index;
+				while (i != top_index(a, size))
+				{
+					ra(a, size);
+					i--;
+				}
+				pb(a, b, size);
+			}
+			i = 0;
+			while (i <= size)
+			{
+				ft_printf("%i ", a[i]);
+				i++;
+			}
+			ft_printf("\n");
+			i = 0;
+			while (i <= size)
+			{
+				ft_printf("%i ", b[i]);
+				i++;
+			}
+			ft_printf("\n");
+		}
+		else
+			break ;
+		j++;
+	}
+	i = 0;
+	while (i <= size)
+	{
+		ft_printf("%i ", a[i]);
+		i++;
+	}
+	ft_printf("\n");
+	i = 0;
+	while (i <= size)
+	{
+		ft_printf("%i ", b[i]);
+		i++;
+	}
+	ft_printf("\n");
+	i = 0;
+	while (i <= size)
+	{
+		pa(a, b, size);
+		i++;
+	}
+	i = 0;
+	while (i <= size)
+	{
+		ft_printf("%i ", a[i]);
+		i++;
+	}
+	ft_printf("\n");
+	i = 0;
+	while (i <= size)
+	{
+		ft_printf("%i ", b[i]);
+		i++;
+	}
+	ft_printf("\n");
 }
