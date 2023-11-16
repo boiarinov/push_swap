@@ -6,7 +6,7 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:39:07 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/11/16 20:42:40 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/11/16 21:18:38 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,22 @@ int	if_duplicate(int n, int i, char **str)
 		i++;
 	}
 	return (0);
+}
+
+int	if_num(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	malloc_error(t_list **a, t_list **b)

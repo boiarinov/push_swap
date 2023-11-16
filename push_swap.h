@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:48 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/11/15 16:18:50 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/16 21:18:04 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	if_five(t_list **a, t_list **b);
 void	if_more(t_list **a, t_list **b);
 int		if_sorted(t_list **a);
 int		if_duplicate(int n, int i, char **str);
+int     if_num(char *str);
 int		malloc_error(t_list **a, t_list **b);
 int		sa(t_list **a);
 int		sb(t_list **b);

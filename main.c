@@ -6,7 +6,7 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:41 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/11/16 20:54:10 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/11/16 21:18:04 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	free_stack(t_list **stack)
 	}
 	free(stack);
 }
-
-
 
 char	**create_args(int argc, char **argv)
 {
@@ -52,7 +50,7 @@ int	create_stack(t_list **a, int argc, char **argv)
 	str = create_args(argc, argv);
 	if (argc > 2)
 		i = 1;
-	while (str[i])
+	while (str[i] && if_num(str[i]))
 	{
 		t = ft_atoi(str[i]);
 		if (t < INT_MIN || t > INT_MAX || if_duplicate(t, i, str))
@@ -64,6 +62,8 @@ int	create_stack(t_list **a, int argc, char **argv)
 		}
 		i++;
 	}
+	if (if_sorted(a))
+		return (0);
 	create_index(a);
 	return (1);
 }
@@ -72,22 +72,17 @@ void	ft_sort(t_list **a, t_list **b)
 {
 	int	size;
 
-	if (!if_sorted(a))
-	{
-		size = ft_lstsize(*a);
-		if (size == 2)
-			sa(a);
-		else if (size == 3)
-			if_three(a);
-		else if (size == 4)
-			if_four(a, b);
-		else if (size == 5)
-			if_five(a, b);
-		else
-			if_more(a, b);
-	}
+	size = ft_lstsize(*a);
+	if (size == 2)
+		sa(a);
+	else if (size == 3)
+		if_three(a);
+	else if (size == 4)
+		if_four(a, b);
+	else if (size == 5)
+		if_five(a, b);
 	else
-		return ;
+		if_more(a, b);
 	if (!if_sorted(a))
 		ft_printf("Error\n");
 }
