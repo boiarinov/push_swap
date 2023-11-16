@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
+/*   ft_print_node.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_ptr_len(unsigned long n)
+static int	ft_node_len(unsigned long n)
 {
 	int	len;
 
@@ -41,17 +41,17 @@ static void	ft_print_pbody(unsigned long n)
 	}
 }
 
-int	ft_print_ptr(void *ptr)
+int	ft_print_ptr(void *node)
 {
 	int				count;
 	unsigned long	p;
 
 	count = 0;
-	if (ptr == 0)
+	if (node == 0)
 		return (ft_print_str("(nil)"));
-	p = (unsigned long)ptr;
+	p = (unsigned long)node;
 	count += write(1, "0x", 2);
 	ft_print_pbody(p);
-	count += ft_ptr_len(p);
+	count += ft_node_len(p);
 	return (count);
 }

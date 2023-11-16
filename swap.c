@@ -3,58 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:53 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/31 13:06:30 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:35:17 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(int *a, int size)
+int	swap(t_list **stack)
 {
-	int	t;
-	int	i;
+	t_list	*node;
+	t_list	*next;
+	int		tmp_val;
+	int		tmp_index;
 
-	i = 0;
-	while (i < size)
-	{
-		if (a[i] != 0)
-			break ;
-		i++;
-	}
-	if (a[i] == 0)
-		return ;
-	t = a[i];
-	a[i] = a[i + 1];
-	a[i + 1] = t;
-	ft_printf("sa\n");
+	if (ft_lstsize(*stack) < 2)
+		return (1);
+	node = *stack;
+	next = node->next;
+	if (!node && !next)
+		ft_printf("Error\n");
+	tmp_val = node->value;
+	tmp_index = node->cur;
+	node->value = next->value;
+	node->cur = next->cur;
+	next->value = tmp_val;
+	next->cur = tmp_index;
+	return (0);
 }
 
-void	sb(int *b, int size)
+int	sa(t_list **a)
 {
-	int	t;
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (b[i] != 0)
-			break ;
-		i++;
-	}
-	if (b[i] == 0)
-		return ;
-	t = b[i];
-	b[i] = b[i + 1];
-	b[i + 1] = t;
-	ft_printf("sb\n");
+	if (swap(a) == 1)
+		return (0);
+	write(1, "sa\n", 3);
+	return (0);
 }
 
-void	ss(int *a, int *b, int size)
+int	sb(t_list **b)
 {
-	sa(a, size);
-	sb(b, size);
-	ft_printf("ss\n");
+	if (swap(b) == 1)
+		return (1);
+	write(1, "sb\n", 3);
+	return (0);
 }

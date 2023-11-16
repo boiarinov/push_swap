@@ -3,68 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:09:06 by boiarinov         #+#    #+#             */
-/*   Updated: 2023/10/24 17:11:32 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:42:40 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pf(int *a, int *b, int size)
+t_list	*ft_lstadd_new(int value)
 {
-	if (a[size - 2] > b[size - 1])
-		pa(a, b, size);
-	else if (a[size - 2] < b[size - 1] && a[size - 1] > b[size - 1])
+	t_list	*new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (0);
+	new->value = value;
+	new->cur = -1;
+	new->next = 0;
+	return (new);
+}
+
+void	create_index(t_list **stack)
+{
+	t_list	*node;
+	int		cur;
+
+	cur = 0;
+	node = get_next_min(stack);
+	while (node)
 	{
-		pa(a, b, size);
-		sa(a, size);
-	}
-	else if (a[size - 1] < b[size - 1] && a[size] > b[size - 1])
-	{
-		rra(a, size);
-		pa(a, b, size);
-		rra(a, size);
-		rra(a, size);
-	}
-	else if (a[size] < b[size - 1])
-	{
-		pa(a, b, size);
-		ra(a, size);
+		node->cur = cur;
+		node = get_next_min(stack);
+		cur++;
 	}
 }
 
-void	pl(int *a, int *b, int size)
+int	get_len(t_list **stack, int cur)
 {
-	if (a[size - 3] > b[size])
-		pa(a, b, size);
-	else if (a[size - 3] < b[size] && a[size - 2] > b[size])
+	t_list	*node;
+	int		len;
+
+	len = 0;
+	node = *stack;
+	while (node)
 	{
-		ra(a, size);
-		pa(a, b, size);
-		rra(a, size);
+		if (node->cur == cur)
+			break ;
+		len++;
+		node = node->next;
 	}
-	else if (a[size - 2] < b[size] && a[size - 1] > b[size])
-	{
-		ra(a, size);
-		pa(a, b, size);
-		sa(a, size);
-		rra(a, size);
-	}
-	else if (a[size - 1] < b[size] && a[size] > b[size])
-	{
-		rra(a, size);
-		pa(a, b, size);
-		ra(a, size);
-		ra(a, size);
-	}
-	else if (a[size] < b[size])
-		pl_2(a, b, size);
+	return (len);
 }
 
-void	pl_2(int *a, int *b, int size)
+int	get_min(t_list **stack, int n)
 {
-	pa(a, b, size);
-	ra(a, size);
+	t_list	*node;
+	int		min;
+
+	node = *stack;
+	min = node->cur;
+	while (node->next)
+	{
+		node = node->next;
+		if ((node->cur < min) && node->cur != n)
+			min = node->cur;
+	}
+	return (min);
+}
+
+t_list	*get_next_min(t_list **stack)
+{
+	t_list	*node;
+	t_list	*min;
+	int		t;
+
+	t = 0;
+	min = NULL;
+	node = *stack;
+	while (node)
+	{
+		if (node->cur == -1 && (!t || node->value < min->value))
+		{
+			min = node;
+			t = 1;
+		}
+		node = node->next;
+	}
+	return (min);
 }

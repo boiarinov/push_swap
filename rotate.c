@@ -3,64 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:38:33 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/31 13:06:30 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:35:17 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(int *a, int size)
+int	rotate(t_list **stack)
 {
-	int	t;
-	int	i;
+	t_list	*node;
+	t_list	*last;
 
-	i = 0;
-	while (i < size)
-	{
-		if (a[i] != 0)
-		{
-			t = a[i];
-			while (i < size)
-			{
-				a[i] = a[i + 1];
-				i++;
-			}
-			a[size] = t;
-		}
-		i++;
-	}
-	ft_printf("ra\n");
+	if (ft_lstsize(*stack) < 2)
+		return (1);
+	node = *stack;
+	last = ft_lstlast(node);
+	*stack = node->next;
+	node->next = NULL;
+	last->next = node;
+	return (0);
 }
 
-void	rb(int *b, int size)
+int	ra(t_list **a)
 {
-	int	t;
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (b[i] != 0)
-		{
-			t = b[i];
-			while (i < size)
-			{
-				b[i] = b[i + 1];
-				i++;
-			}
-			b[size] = t;
-		}
-		i++;
-	}
-	ft_printf("rb\n");
+	if (rotate(a) == 1)
+		return (0);
+	write(1, "ra\n", 3);
+	return (0);
 }
 
-void	rr(int *a, int *b, int size)
+int	rb(t_list **b)
 {
-	ra(a, size);
-	rb(b, size);
-	ft_printf("rr\n");
+	if (rotate(b) == 1)
+		return (0);
+	write(1, "ra\n", 3);
+	return (0);
 }

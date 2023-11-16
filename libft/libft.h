@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:49:18 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/24 16:17:38 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:39:04 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 typedef struct s_list
 {
 	void			*content;
+	int				value;
+	int				cur;
 	struct s_list	*next;
 }					t_list;
 
@@ -58,6 +60,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -76,6 +79,6 @@ int		ft_print_str(char *str);
 int		ft_print_int(long n);
 int		ft_print_uint(unsigned int n);
 int		ft_print_hex(unsigned int x, char xcase);
-int		ft_print_ptr(void *ptr);
+int		ft_print_ptr(void *node);
 
 #endif

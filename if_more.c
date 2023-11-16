@@ -3,174 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   if_more.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:34:02 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/11/01 17:40:01 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:45:21 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	smallest(int *a, int size)
+int	get_bits(t_list	**stack)
 {
-	int	r;
-	int	i;
+	t_list	*node;
+	int		index;
+	int		bits;
 
-	i = 0;
-	r = 0;
-	while (i <= size)
+	node = *stack;
+	index = node->cur;
+	bits = 0;
+	while (node)
 	{
-		if (a[i] != 0)
-		{
-			r = a[i];
-			break ;
-		}
-		i++;
+		if (node->cur > index)
+			index = node->cur;
+		node = node->next;
 	}
-	i = 0;
-	while (i <= size)
-	{
-		if (r != 0 && r > a[i] && a[i] != 0)
-			r = a[i];
-		i++;
-	}
-	if (r == 0)
-		return (-1);
-	return (r);
+	while ((index >> bits) != 0)
+		bits++;
+	return (bits);
 }
 
-int	current_array_size(int *a, int size)
+void	if_more(t_list **a, t_list **b)
 {
-	int	i;
-	int	c;
+	t_list	*node;
+	int		i;
+	int		j;
+	int		size;
+	int		bits;
 
 	i = 0;
-	c = 0;
-	while (i <= size)
+	node = *a;
+	size = ft_lstsize(node);
+	bits = get_bits(a);
+	while (i < bits)
 	{
-		if (a[i] != 0)
-			c++;
-		i++;
-	}
-	return (c);
-}
-
-int	top_index(int *a, int size)
-{
-	int	i;
-	int	t;
-
-	i = 0;
-	t = 0;
-	while (i <= size)
-	{
-		if (a[i] != 0)
+		j = 0;
+		while (j++ < size)
 		{
-			t = i;
-			break ;
-		}
-		i++;
-	}
-	return (t);
-}
-
-void	if_more(int *a, int *b, int size)
-{
-	int	t;
-	int	i;
-	int	index;
-	int	j;
-
-	i = 0;
-	t = 0;
-	j = 0;
-	index = 0;
-	while (j < size)
-	{
-		t = smallest(a, size);
-		ft_printf("Smallest: %i\n", t);
-		if (t > 0)
-		{
-			i = 0;
-			while (i <= size)
-			{
-				if (t == a[i] && t != 0)
-				{
-					index = i;
-					break ;
-				}
-				i++;
-			}
-			ft_printf("Index: %i\n", index);
-			if (index == top_index(a, size))
-				pb(a, b, size);
-			else if (a[index] == a[size])
-			{
-				rra(a, size);
-				pb(a, b, size);
-			}
+			node = *a;
+			if (((node->cur >> i) & 1) == 1)
+				ra(a);
 			else
-			{
-				i = index;
-				while (i != top_index(a, size))
-				{
-					ra(a, size);
-					i--;
-				}
-				pb(a, b, size);
-			}
-			i = 0;
-			while (i <= size)
-			{
-				ft_printf("%i ", a[i]);
-				i++;
-			}
-			ft_printf("\n");
-			i = 0;
-			while (i <= size)
-			{
-				ft_printf("%i ", b[i]);
-				i++;
-			}
-			ft_printf("\n");
+				pb(a, b);
 		}
-		else
-			break ;
-		j++;
-	}
-	i = 0;
-	while (i <= size)
-	{
-		ft_printf("%i ", a[i]);
+		while (ft_lstsize(*b) != 0)
+			pa(a, b);
 		i++;
 	}
-	ft_printf("\n");
-	i = 0;
-	while (i <= size)
-	{
-		ft_printf("%i ", b[i]);
-		i++;
-	}
-	ft_printf("\n");
-	i = 0;
-	while (i <= size)
-	{
-		pa(a, b, size);
-		i++;
-	}
-	i = 0;
-	while (i <= size)
-	{
-		ft_printf("%i ", a[i]);
-		i++;
-	}
-	ft_printf("\n");
-	i = 0;
-	while (i <= size)
-	{
-		ft_printf("%i ", b[i]);
-		i++;
-	}
-	ft_printf("\n");
 }

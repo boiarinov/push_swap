@@ -3,59 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:16 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/11/01 16:20:39 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:35:17 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(int *a, int *b, int size)
+int	push(t_list **stack_to, t_list **stack_from)
 {
-	int	t;
-	int	i;
+	t_list	*tmp;
+	t_list	*node_to;
+	t_list	*node_from;
 
-	i = 0;
-	while (i < size)
+	if (ft_lstsize(*stack_from) == 0)
+		return (1);
+	node_to = *stack_to;
+	node_from = *stack_from;
+	tmp = node_from;
+	node_from = node_from->next;
+	*stack_from = node_from;
+	if (!node_to)
 	{
-		if (b[i] != 0)
-			break ;
-		i++;
+		node_to = tmp;
+		node_to->next = NULL;
+		*stack_to = node_to;
 	}
-	while (size >= 0)
+	else
 	{
-		if (a[size] == 0)
-			break ;
-		size--;
+		tmp->next = node_to;
+		*stack_to = tmp;
 	}
-	t = b[i];
-	b[i] = 0;
-	a[size] = t;
-	ft_printf("pa\n");
+	return (0);
 }
 
-void	pb(int *a, int *b, int size)
+int	pa(t_list **a, t_list **b)
 {
-	int	t;
-	int	i;
+	if (push(a, b) == 1)
+		return (1);
+	ft_printf("pa\n");
+	return (0);
+}
 
-	i = 0;
-	while (i < size)
-	{
-		if (a[i] != 0)
-			break ;
-		i++;
-	}
-	while (size >= 0)
-	{
-		if (b[size] == 0)
-			break ;
-		size--;
-	}
-	t = a[i];
-	a[i] = 0;
-	b[size] = t;
+int	pb(t_list **a, t_list **b)
+{
+	if (push(b, a) == 1)
+		return (1);
 	ft_printf("pb\n");
+	return (0);
 }

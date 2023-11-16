@@ -6,29 +6,41 @@
 /*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:48 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/27 14:37:00 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:18:50 by aboiarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <limits.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-void	if_three(int *a, int size);
-void	if_four(int	*a, int *b, int size);
-void	if_five(int	*a, int *b, int size);
-void	if_more(int *a, int *b, int size);
-int		if_sorted(int *a, int size);
-void	sa(int *a, int size);
-void	sb(int *b, int size);
-void	ss(int *a, int *b, int size);
-void	pa(int *a, int *b, int size);
-void	pb(int *a, int *b, int size);
-void	ra(int *a, int size);
-void	rb(int *b, int size);
-void	rr(int *a, int *b, int size);
-void	rra(int *a, int size);
-void	rrb(int *b, int size);
-void	rrr(int *a, int *b, int size);
-void	pf(int *a, int *b, int size);
-void	pl(int *a, int *b, int size);
-void	pl_2(int *a, int *b, int size);
+# include "libft/libft.h"
+# include <limits.h>
+
+void	if_three(t_list **a);
+void	if_four(t_list **a, t_list **b);
+void	if_five(t_list **a, t_list **b);
+void	if_more(t_list **a, t_list **b);
+int		if_sorted(t_list **a);
+int		if_duplicate(int n, int i, char **str);
+int		malloc_error(t_list **a, t_list **b);
+int		sa(t_list **a);
+int		sb(t_list **b);
+int		ss(t_list **a, t_list **b);
+int		pa(t_list **a, t_list **b);
+int		pb(t_list **a, t_list **b);
+int		ra(t_list **a);
+int		rb(t_list **b);
+int		rr(t_list **a, t_list **b);
+int		rra(t_list **a);
+int		rrb(t_list **b);
+int		rrr(t_list **a, t_list **b);
+
+t_list	*ft_lstadd_new(int value);
+void	free_stack(t_list **stack);
+void	create_index(t_list **a);
+
+int		get_min(t_list **stack, int n);
+t_list	*get_next_min(t_list **a);
+int		get_len(t_list **stack, int index);
+
+#endif

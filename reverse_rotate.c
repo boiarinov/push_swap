@@ -3,50 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:39:28 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/10/31 13:06:30 by aboiarin         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:35:17 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(int *a, int size)
+int	reverse_rotate(t_list **stack)
 {
-	int	t;
-	int	i;
+	t_list	*node;
+	t_list	*last;
 
-	t = a[size];
-	i = size;
-	while (a[i - 1] != 0)
+	if (ft_lstsize(*stack) < 2)
+		return (1);
+	node = *stack;
+	last = ft_lstlast(node);
+	while (node)
 	{
-		a[i] = a[i - 1];
-		i--;
+		if (node->next->next == NULL)
+		{
+			node->next = NULL;
+			break ;
+		}
+		node = node->next;
 	}
-	a[i] = t;
-	ft_printf("rra\n");
+	last->next = *stack;
+	*stack = last;
+	return (0);
 }
 
-void	rrb(int *b, int size)
+/*rra (reverse rotate a): Shift down all elements of stack a by 1.
+The last element becomes the first one.*/
+int	rra(t_list **a)
 {
-	int	t;
-	int	i;
-
-	t = b[size];
-	i = size;
-	while (b[i - 1] != 0)
-	{
-		b[i] = b[i - 1];
-		i--;
-	}
-	b[i] = t;
-	ft_printf("rrb\n");
-}
-
-void	rrr(int *a, int *b, int size)
-{
-	rra(a, size);
-	rrb(b, size);
-	ft_printf("rrr\n");
+	if (reverse_rotate(a) == 1)
+		return (0);
+	write (1, "rra\n", 4);
+	return (0);
 }
