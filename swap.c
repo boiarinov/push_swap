@@ -6,7 +6,7 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:53 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/11/16 21:39:15 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/11/17 23:27:09 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	swap(t_list **stack)
 	if (!node && !next)
 		ft_printf("Error\n");
 	tmp_val = node->value;
-	tmp_index = node->cur;
+	tmp_index = node->pos;
 	node->value = next->value;
-	node->cur = next->cur;
+	node->pos = next->pos;
 	next->value = tmp_val;
-	next->cur = tmp_index;
+	next->pos = tmp_index;
 }
 
 void	sa(t_list **a)

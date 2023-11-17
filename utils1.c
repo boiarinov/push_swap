@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:09:06 by boiarinov         #+#    #+#             */
-/*   Updated: 2023/11/16 20:42:40 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/11/17 23:28:56 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_list	*ft_lstadd_new(int value)
 	if (!new)
 		return (0);
 	new->value = value;
-	new->cur = -1;
+	new->pos = -1;
 	new->next = 0;
 	return (new);
 }
@@ -28,19 +28,19 @@ t_list	*ft_lstadd_new(int value)
 void	create_index(t_list **stack)
 {
 	t_list	*node;
-	int		cur;
+	int		pos;
 
-	cur = 0;
+	pos = 0;
 	node = get_next_min(stack);
 	while (node)
 	{
-		node->cur = cur;
+		node->pos = pos;
 		node = get_next_min(stack);
-		cur++;
+		pos++;
 	}
 }
 
-int	get_len(t_list **stack, int cur)
+int	get_len(t_list **stack, int pos)
 {
 	t_list	*node;
 	int		len;
@@ -49,7 +49,7 @@ int	get_len(t_list **stack, int cur)
 	node = *stack;
 	while (node)
 	{
-		if (node->cur == cur)
+		if (node->pos == pos)
 			break ;
 		len++;
 		node = node->next;
@@ -63,12 +63,12 @@ int	get_min(t_list **stack, int n)
 	int		min;
 
 	node = *stack;
-	min = node->cur;
+	min = node->pos;
 	while (node->next)
 	{
 		node = node->next;
-		if ((node->cur < min) && node->cur != n)
-			min = node->cur;
+		if ((node->pos < min) && node->pos != n)
+			min = node->pos;
 	}
 	return (min);
 }
@@ -84,7 +84,7 @@ t_list	*get_next_min(t_list **stack)
 	node = *stack;
 	while (node)
 	{
-		if (node->cur == -1 && (!t || node->value < min->value))
+		if (node->pos == -1 && (!t || node->value < min->value))
 		{
 			min = node;
 			t = 1;

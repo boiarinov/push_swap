@@ -6,7 +6,7 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:34:02 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/11/16 21:31:56 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/11/17 23:27:09 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	get_bits(t_list	**stack)
 	int		bits;
 
 	node = *stack;
-	index = node->cur;
+	index = node->pos;
 	bits = 0;
 	while (node)
 	{
-		if (node->cur > index)
-			index = node->cur;
+		if (node->pos > index)
+			index = node->pos;
 		node = node->next;
 	}
 	while ((index >> bits) != 0)
@@ -50,7 +50,7 @@ void	if_more(t_list **a, t_list **b)
 		while (j++ < size)
 		{
 			node = *a;
-			if (((node->cur >> i) & 1) == 1)
+			if (((node->pos >> i) & 1) == 1)
 				ra(a);
 			else
 				pb(a, b);

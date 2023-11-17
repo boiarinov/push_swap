@@ -6,7 +6,7 @@
 /*   By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:53:41 by aboiarin          #+#    #+#             */
-/*   Updated: 2023/11/16 21:18:04 by boiarinov        ###   ########.fr       */
+/*   Updated: 2023/11/17 23:21:02 by boiarinov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,38 +28,43 @@ void	free_stack(t_list **stack)
 	free(stack);
 }
 
-char	**create_args(int argc, char **argv)
+static char	**create_arr(int argc, char **argv)
 {
-	char	**str;
+	char	**arr;
 
 	if (argc == 2)
-		str = ft_split(argv[1], ' ');
+		arr = ft_split(argv[1], ' ');
 	else
-		str = argv;
-	return (str);
+		arr = argv;
+	return (arr);
 }
 
-int	create_stack(t_list **a, int argc, char **argv)
+static int	create_stack(t_list **a, int argc, char **argv)
 {
 	int		i;
-	int		t;
-	char	**str;
-	t_list	*n;
+	long	t;
+	char	**arr;
+	t_list	*new;
 
 	i = 0;
-	str = create_args(argc, argv);
+	arr = create_arr(argc, argv);
 	if (argc > 2)
 		i = 1;
-	while (str[i] && if_num(str[i]))
+	while (arr[i])
 	{
-		t = ft_atoi(str[i]);
-		if (t < INT_MIN || t > INT_MAX || if_duplicate(t, i, str))
-			return (0);
-		else
+		if (if_num(arr[i]))
 		{
-			n = ft_lstadd_new(t);
-			ft_lstadd_back(a, n);
+			t = ft_atol(arr[i]);
+			if (t < INT_MIN || t > INT_MAX || if_duplicate((int)t, i, arr))
+				return (0);
+			else
+			{
+				new = ft_lstadd_new((int)t);
+				ft_lstadd_back(a, new);
+			}
 		}
+		else
+			return (0);
 		i++;
 	}
 	if (if_sorted(a))

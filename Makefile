@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aboiarin <aboiarin@student.42.fr>          +#+  +:+       +#+         #
+#    By: boiarinov <boiarinov@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 16:53:13 by aboiarin          #+#    #+#              #
-#    Updated: 2023/11/01 17:42:41 by aboiarin         ###   ########.fr        #
+#    Updated: 2023/11/17 23:00:25 by boiarinov        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME = push_swap
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-SRC = main.c push.c swap.c rotate.c reverse_rotate.c cases.c utils.c if_more.c
+SRC = main.c push.c swap.c rotate.c reverse_rotate.c cases.c if_more.c utils1.c utils2.c
 
 OBJ = $(SRC:.c=.o)
 
